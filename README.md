@@ -14,11 +14,14 @@
 yarn install
 ```
 
-本地访问： http://localhost:8848/
-
 ### 运行 dev 版本
 ```
 yarn run dev
+```
+
+本地访问
+```
+ http://localhost:8848
 ```
 
 ### 生产

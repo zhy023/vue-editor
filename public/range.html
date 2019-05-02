@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    .box {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+<div id="box" class="box" contenteditable="true">abcd<span>efghi</span>jk<p>mnop</p><span>qrstwvu</span>xyz</div>
+<button onclick="rangeInfo()">获取 range</button>
+<button onclick="setStartEnd()">setStart setEnd</button>
+<button onclick="setStartEndBefore()">setStartEndBefore</button>
+<button onclick="setStartEndAfter()">setStartEndAfter</button>
+<button onclick="setSelectNode()">setSelectNode</button>
+<button onclick="selectNodeContents()">selectNodeContents</button>
+<script type="text/javascript">
+  function getRange() {
+    var selection = window.getSelection();
+    return selection.getRangeAt(0);
+  }
+
+  // 打印 range 数据
+  function rangeInfo() {
+    var range = getRange();
+    console.log(range);
+  }
+
+  // 设置 setStart setEnd
+  function setStartEnd() {
+    var box = document.getElementById('box');
+    if (document.createRange) {
+      var range = document.createRange();
+      var start = box.querySelector('span').firstChild; // 开始节点是 p
+      var end = box.querySelector('p').firstChild; // 结束节点是 span
+
+      range.setStart(start, 2); // p 标签的第 2 个字符
+      range.setEnd(end, 3); // span 标签的 第 3 个字符
+      console.log(range.cloneContents());
+      console.log(range);
+    }
+  }
+
+  // 设置 setStartBefore setEndBefore
+  function setStartEndBefore() {
+    var box = document.getElementById('box');
+    if (document.createRange) {
+      var range = document.createRange();
+      var spans = box.querySelectorAll('span');
+      var refStart = spans[0].firstChild;
+      var refEnd = spans[1].firstChild;
+
+      range.setStartBefore(refStart); // 设置 p 节点的开始位置为 range 的起点
+      range.setEndBefore(refEnd); // 设置 span 节点的开始位置为 range 的终点
+
+      console.log(range.cloneContents());
+      console.log(range);
+    }
+  }
+
+  // 设置 setStartAfter setEndAfter
+  function setStartEndAfter() {
+    var box = document.getElementById('box');
+    if (document.createRange) {
+      var range = document.createRange();
+      var spans = box.querySelectorAll('span');
+      var refStart = spans[0].firstChild;
+      var refEnd = spans[1].firstChild;
+
+      range.setStartAfter(refStart); // 设置 p 节点的结束位置为 range 的起点
+      range.setEndAfter(refEnd); // 设置 span 节点的结束位置为 range 的终点
+
+      console.log(range.cloneContents());
+      console.log(range);
+    }
+  }
+
+  // 设置 selectNode
+  function setSelectNode() {
+    var box = document.getElementById('box');
+    if (document.createRange) {
+      var range = document.createRange();
+      var span = box.querySelector('span').firstChild;
+
+      range.selectNode(span);
+
+      console.log(range.cloneContents());
+      console.log(range);
+    }
+  }
+
+  // 设置 selectNodeContents
+  function selectNodeContents() {
+    var box = document.getElementById('box');
+    if (document.createRange) {
+      var range = document.createRange();
+      var span = box.querySelector('span').firstChild;
+
+      range.selectNodeContents(span);
+
+      console.log(range.cloneContents());
+      console.log(range);
+    }
+  }
+</script>
+</body>
+</html>

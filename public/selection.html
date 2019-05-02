@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    .box {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+<div id="box" class="box" contenteditable="true">
+  abcd<span>efghi</span>jk<p>mnop</p><span>qrstwvu</span>xyz
+</div>
+<button onclick="getSel()">获取 selection</button>
+<button onclick="rangeAt()">获取 rangeAt</button>
+<button onclick="setCollapse()">collapse 折叠选区</button>
+<button onclick="setSelectAllChildren()">selectAllChildren</button>
+<button onclick="addRange()">addRange</button>
+
+<script type="text/javascript">
+  var box = document.getElementById('box');
+
+  function getSel() {
+    var sel = window.getSelection();
+    // 如果有 range
+    if (sel.rangeCount > 0) {
+      var range = sel.getRangeAt(0);
+      console.log(range.cloneContents());
+    }
+    console.log(sel);
+  }
+
+  function rangeAt() {
+    var ranges = [];
+    var sel = window.getSelection();
+
+    for(var i = 0; i < sel.rangeCount; i++) {
+      ranges[i] = sel.getRangeAt(i);
+    }
+
+    console.log(ranges);
+  }
+
+  function setCollapse() {
+    var sel = window.getSelection();
+    box.focus();
+    var p = box.querySelector('p').firstChild;
+    sel.collapse(p, 2); // 设置光标的位置在 p 标签的第三个字符前面
+
+    if (sel.rangeCount > 0) {
+      var range = sel.getRangeAt(0);
+      console.log(range);
+    }
+  }
+
+  function setSelectAllChildren() {
+    var sel = window.getSelection();
+    sel.selectAllChildren(box); // 把可编辑区的所有子节点纳入选区
+
+    if (sel.rangeCount > 0) {
+      var range = sel.getRangeAt(0);
+      console.log(range.cloneContents());
+    }
+  }
+
+  function addRange() {
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    box.focus();
+
+    // 将所有的子节点放到选区中
+    var children = box.children;
+    for(var i = 0; i < children.length; i++) {
+      var range = document.createRange();
+
+      console.log(children[i]);
+      range.selectNode(children[i]);
+      sel.addRange(range);
+    }
+
+    console.log(sel); // 打印 range 的数量
+  }
+</script>
+</body>
+</html>

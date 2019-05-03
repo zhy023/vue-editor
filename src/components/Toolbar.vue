@@ -91,7 +91,7 @@
       <div
         ref="foreColor"
         style="min-width: 252px;"
-        :class="['drop', { 'show': drop.state && drop.value === 'foreColor' }]"
+        :class="['drop fore-color', { 'show': drop.state && drop.value === 'foreColor' }]"
       ></div>
     </div>
 
@@ -106,7 +106,7 @@
       <div
         ref="bgColor"
         style="min-width: 252px;"
-        :class="['drop', { 'show': drop.state && drop.value === 'bgColor' }]"
+        :class="['drop bg-color', { 'show': drop.state && drop.value === 'bgColor' }]"
       ></div>
     </div>
     <button

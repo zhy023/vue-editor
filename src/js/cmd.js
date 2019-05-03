@@ -18,30 +18,30 @@ export default class Cmd {
   // h1-h6
   header(val) {
     const key = 'formatBlock';
-    this.editor.execCommand(key, `<${val}>`);
+    this.editor.range.execCommand(key, `<${val}>`);
   }
 
   // font-family
   fontFamily(val) {
     const key = 'fontName';
-    this.editor.execCommand(key, val);
+    this.editor.range.execCommand(key, val);
   }
 
   // 单标签操作只需要一个参数
   setTag(val) {
-    this.editor.execCommand(val);
+    this.editor.range.execCommand(val);
   }
 
   // 设置前景色
   color(val) {
     const key = 'foreColor';
-    this.editor.execCommand(key, val);
+    this.editor.range.execCommand(key, val);
   }
 
   // 设置背景色
   bgColor(val) {
     const key = 'backColor';
-    this.editor.execCommand(key, val);
+    this.editor.range.execCommand(key, val);
   }
 
   // 对其操作
@@ -52,7 +52,7 @@ export default class Cmd {
       'align-right': 'justifyRight',
       'align-center': 'justifyCenter',
     };
-    this.editor.execCommand(cmdMap[val], val);
+    this.editor.range.execCommand(cmdMap[val], val);
   }
 
   // 创建有序列表或者无序列表
@@ -62,14 +62,14 @@ export default class Cmd {
       unordered: 'insertUnorderedList',
     };
 
-    this.editor.execCommand(orderMap[val]);
+    this.editor.range.execCommand(orderMap[val]);
   }
 
   // 插入图片
   insertImage(val) {
     const span = document.createElement('span');
     span.appendChild(val);
-    this.editor.execCommand('insertHTML', span.innerHTML);
+    this.editor.range.execCommand('insertHTML', span.innerHTML);
   }
 
   insertTable({ col, row }) {
@@ -92,6 +92,6 @@ export default class Cmd {
     const div = document.createElement('div');
     div.appendChild(table);
 
-    this.editor.execCommand('insertHTML', div.innerHTML);
+    this.editor.range.execCommand('insertHTML', div.innerHTML);
   }
 }

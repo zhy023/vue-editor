@@ -10,6 +10,12 @@ module.exports = {
       port: 8848,
     },
     mode: 'development',
+    // build: {
+    //   index: `${root}/dist/index.html`,
+    //   assetsRoot: `${root}/dist`,
+    //   assetsSubDirectory: 'public',
+    //   assetPublicPath:`${root}/dist`,
+    // },
     resolve: {
       symlinks: false,
       alias: {

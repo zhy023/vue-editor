@@ -2,6 +2,13 @@
   "name": "richeditor",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "editor",
+    "vue editor",
+    "editor vue",
+    "rich text",
+    "wysiwyg"
+  ],
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",

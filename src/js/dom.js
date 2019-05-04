@@ -248,3 +248,18 @@ export const appendChild = (node, child) => {
     node.appendChild(child);
   }
 };
+
+// 获取设置属性
+export const attr = (node, key, value = '') => {
+  // 获取 attribute
+  if (value === '') { return node.getAttribute(attr); }
+
+  // 删除 attribute
+  if (value == null) {
+    node.removeAttribute(attr);
+    return;
+  }
+
+  // 设置 attribute
+  node.setAttribute(key, value);
+};

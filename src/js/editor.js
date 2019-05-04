@@ -6,13 +6,14 @@
  * @author  zhangmao
  * @change  2019/4/5
  */
-import { trim, uniqueId } from 'lodash';
+import { trim, merge, uniqueId } from 'lodash';
 import browser from 'src/js/browser';
 import Event, { fireOn } from 'src/js/event'; // event 模块
 import Range from 'src/js/range'; // range
 import Cmd from 'src/js/cmd'; // cmd 模块
 import KEYMAP from 'src/js/keyMap';
 import ElementList from 'src/js/elementList';
+import defConfig from 'src/js/config';
 import * as dom from 'src/js/dom';
 import logger from 'src/js/logger';
 
@@ -29,7 +30,7 @@ export default class Editor {
     if (!element || !browser.isSupport) { return; }
 
     this.container = element;
-    this.options = options;
+    this.options = merge({}, defConfig, options);
 
     // 创建事件对象
     this.initEvent();
@@ -63,6 +64,10 @@ export default class Editor {
     wysiwyg.tabindex = 1;
     wysiwyg.className = 'editor';
     wysiwyg.contentEditable = true;
+
+    if (this.options.placeholder) {
+      dom.attr(wysiwyg, 'placeholder', this.options.placeholder);
+    }
 
     // 保存 id 引用
     this.uuid = uuid;

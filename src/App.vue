@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="margin: 10px;">
+  <div id="app">
     <div style="width:800px; margin: 0 auto">
       <Toolbar
         @header="doHeader"
@@ -102,13 +102,3 @@
     },
   }
 </script>
-
-<style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
-</style>

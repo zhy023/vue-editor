@@ -1,11 +1,5 @@
-/*
-* @Author: 2ue
-* @Date:   2016-12-06 16:35:25
-* @Last Modified time: 2016-12-06 16:35:29
-*/
 html,
 body {
-  width: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;

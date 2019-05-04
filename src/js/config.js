@@ -8,6 +8,6 @@
  */
 export default {
   at: ['@', '#'], // 输入匹配列表配置
-  format: 'bbcode', // 格式化输出的编辑器内容
-  placeholder: '', // editor 的 placeholder
+  // format: 'bbcode', // 格式化输出的编辑器内容
+  placeholder: 'wysiwyg editor', // editor 的 placeholder
 };

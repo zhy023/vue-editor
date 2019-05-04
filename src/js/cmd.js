@@ -27,6 +27,13 @@ export default class Cmd {
     this.editor.range.execCommand(key, val);
   }
 
+  // font-size
+  fontSize(val) {
+    const key = 'fontSize';
+    console.log('font-size', key, val);
+    // this.editor.range.execCommand(key, `${val}px`);
+  }
+
   // 单标签操作只需要一个参数
   setTag(val) {
     this.editor.range.execCommand(val);

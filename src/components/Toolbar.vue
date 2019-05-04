@@ -51,6 +51,82 @@
         </li>
       </ul>
     </div>
+    <!--<div class="toolbar-dorpdown">
+      <button
+        class="btn"
+        title="字体大小"
+        @click="toggleDrop('fontSize')"
+      >字体大小
+      </button>
+      <ul :class="['drop', { 'show': drop.state && drop.value === 'fontSize' }]">
+        <li
+          style="font-size:12px"
+          @click="emitFontSize('12')"
+        >
+          12px
+        </li>
+        <li
+          style="font-size:14px"
+          @click="emitFontSize('14')"
+        >
+          14px
+        </li>
+        <li
+          style="font-size:16px"
+          @click="emitFontSize('16')"
+        >
+          16px
+        </li>
+        <li
+          style="font-size:18px"
+          @click="emitFontSize('18')"
+        >
+          18px
+        </li>
+        <li
+          style="font-size:20px"
+          @click="emitFontSize('20')"
+        >
+          20px
+        </li>
+        <li
+          style="font-size:22px"
+          @click="emitFontSize('22')"
+        >
+          22px
+        </li>
+        <li
+          style="font-size:24px"
+          @click="emitFontSize('24')"
+        >
+          24px
+        </li>
+        <li
+          style="font-size:26px"
+          @click="emitFontSize('26')"
+        >
+          26px
+        </li>
+        <li
+          style="font-size:28px"
+          @click="emitFontSize('28')"
+        >
+          28px
+        </li>
+        <li
+          style="font-size:30px"
+          @click="emitFontSize('30')"
+        >
+          30px
+        </li>
+        <li
+          style="font-size:32px"
+          @click="emitFontSize('32')"
+        >
+          32px
+        </li>
+      </ul>
+    </div>-->
     <button
       class="btn"
       title="加粗"
@@ -79,7 +155,20 @@
     >
       <i class="fa fa-strikethrough" />
     </button>
-
+    <button
+      class="btn"
+      title="下角标"
+      @click="emitTag('subscript')"
+    >
+      <i class="fa fa-subscript" />
+    </button>
+    <button
+      class="btn"
+      title="上角标"
+      @click="emitTag('superscript')"
+    >
+      <i class="fa fa-superscript" />
+    </button>
     <div class="toolbar-dorpdown">
       <button
         class="btn"
@@ -319,6 +408,29 @@
         </div>
       </div>
     </div>
+
+    <button
+      class="btn"
+      title="去除所有格式"
+      @click="emitTag('removeFormat')"
+    >
+      <i class="fa fa-eraser" />
+    </button>
+    <button
+      class="btn"
+      title="撤销"
+      @click="emitTag('undo')"
+    >
+      <i class="fa fa-undo" />
+    </button>
+    <button
+      class="btn"
+      title="重做"
+      @click="emitTag('redo')"
+    >
+      <i class="fa fa-repeat" />
+    </button>
+    <div class="clearfix" />
   </div>
 </template>
 
@@ -407,6 +519,11 @@
       emitFont(val) {
         this.drop.state = false;
         this.$emit('family', val);
+      },
+
+      emitFontSize(val) {
+        this.drop.state = false;
+        this.$emit('fontSize', val);
       },
 
       emitTag(val) {

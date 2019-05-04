@@ -4,6 +4,7 @@
       <Toolbar
         @header="doHeader"
         @family="doFamily"
+        @fontSize="doFontSize"
         @tag="doTag"
         @color="doColor"
         @background="doBackColor"
@@ -70,6 +71,10 @@
 
       doFamily(val) {
         this.editor.cmd.fontFamily(val);
+      },
+
+      doFontSize(val) {
+        this.editor.cmd.fontSize(val);
       },
 
       doTag(val) {

@@ -28,11 +28,11 @@ export default class Cmd {
   }
 
   // font-size
-  fontSize(val) {
-    const key = 'fontSize';
-    console.log('font-size', key, val);
-    // this.editor.range.execCommand(key, `${val}px`);
-  }
+  // fontSize(val) {
+  //   const key = 'fontSize';
+  //   console.log('font-size', key, val);
+  //   // this.editor.range.execCommand(key, `${val}px`);
+  // }
 
   // 单标签操作只需要一个参数
   setTag(val) {

@@ -39,7 +39,7 @@ export default class InsertImage {
           }
         };
         fileReader.readAsDataURL(file);
-      } catch (e) {}
+      } catch (e) { console.log(e); }
     }
   }
 }

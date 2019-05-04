@@ -1,6 +1,6 @@
-# vueditor 富文本编辑器
+# vue-editor 富文本编辑器
 
-### 非常精简的一款编辑器，基于 execCommand 命令，编辑器的功能依赖了 lodash 的几个方法，其他部分是基于原生的 Api；
+### 非常精简的一款编辑器，支持IE9+，chrome4+，Firefox3.5+，opera10+浏览器，编辑器的功能依赖了 lodash 工具库，其于部分基于原生的 Api；
 
 ## 功能：
 
@@ -28,6 +28,3 @@ yarn run dev
 ```
 yarn run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,6 +1,6 @@
 ### vue-editor 富文本编辑器
 
-非常精简的一款编辑器，支持IE9+，chrome4+，Firefox3.5+，opera10+浏览器，编辑器的功能依赖了 lodash 工具库，其于部分基于原生的 Api；
+轻量，所见即所得的一款编辑器，支持IE9+，chrome4+，Firefox3.5+，opera10+浏览器，编辑器的功能依赖了 lodash 工具库，其于部分基于原生的 Api；
 
 ### 功能：
 

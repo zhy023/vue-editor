@@ -121,11 +121,11 @@ export const getScrollWidth = () => {
 };
 
 // 检测 class
-export function hasClass(el = null, cls = '') {
-  if (!el || !cls) { return false; }
+export function hasClass(element = null, cls = '') {
+  if (!element || !cls) { return false; }
   if (cls.indexOf(' ') !== -1) { throw new Error('className should not contain space.'); }
-  if (el.classList) { return el.classList.contains(cls); }
-  return ` ${el.className} `.indexOf(` ${cls} `) > -1;
+  if (element.classList) { return element.classList.contains(cls); }
+  return ` ${element.className} `.indexOf(` ${cls} `) > -1;
 }
 
 // 添加 class
@@ -173,28 +173,27 @@ export function removeClass(element, cls) {
 }
 
 // 去掉 html 的标签
-export const removeHTMLTag = (str) => {
-  let label = str;
-
-  label = label.replace(/<\/?[^>]*>/g, ''); // 去除HTML tag
-  label = label.replace(/[ | ]*\n/g, '\n'); // 去除行尾空白
-  label = label.replace(/\n[\s| | ]*\r/g, '\n'); // 去除多余空行
-  label = label.replace(/&nbsp;/ig, ''); // 去掉&nbsp;
-  return label;
+export const removeHTMLTag = (html) => {
+  let str = html;
+  str = str.replace(/<\/?[^>]*>/g, ''); // 去除HTML tag
+  str = str.replace(/[ | ]*\n/g, '\n'); // 去除行尾空白
+  str = str.replace(/\n[\s| | ]*\r/g, '\n'); // 去除多余空行
+  str = str.replace(/&nbsp;/ig, ''); // 去掉&nbsp;
+  return str;
 };
 
 // 禁用鼠标右键，禁止复制粘贴等操作
 export const banCopyAndPaste = () => {
-  document.oncopy = (event) => { event.preventDefault(); };
-  document.oncontextmenu = (event) => { event.preventDefault(); };
-  document.onselectstart = (event) => { event.preventDefault(); };
-  document.onkeydown = event => !event.ctrlKey;
+  docu.oncopy = (evt) => { evt.preventDefault(); };
+  docu.oncontextmenu = (evt) => { evt.preventDefault(); };
+  docu.onselectstart = (evt) => { evt.preventDefault(); };
+  docu.onkeydown = evt => !evt.ctrlKey;
 };
 
 // 设置css主题样式文件
 export const setStyleSheet = (path) => {
-  const docHead = document.head;
-  const linkList = document.getElementsByTagName('link');
+  const docHead = docu.head;
+  const linkList = docu.getElementsByTagName('link');
   if (linkList) {
     for (let i = 0; i < linkList.length; i += 1) {
       if (linkList[i].getAttribute('ty') === 'theme') {
@@ -203,7 +202,7 @@ export const setStyleSheet = (path) => {
     }
   }
 
-  const linkStyle = document.createElement('link');
+  const linkStyle = docu.createElement('link');
   linkStyle.setAttribute('rel', 'stylesheet');
   linkStyle.setAttribute('type', 'text/css');
   linkStyle.setAttribute('href', path);
@@ -213,7 +212,7 @@ export const setStyleSheet = (path) => {
 
 // 获取url的参数
 export const getUrlParams = () => {
-  const urlSearch = window.location.search;
+  const urlSearch = wind.location.search;
   const param = {};
   if (urlSearch.indexOf('?') !== -1) {
     const str = urlSearch.substr(1);
@@ -231,35 +230,35 @@ export const getUrlParams = () => {
 
 // ------------------------------------------------------------------------------
 
-// 获取节点
-export const $ = (parent = document, selector, multiple = false) => {
+// 获取单个或者多个节点，制定节点下的节点元素
+export const $ = (parent = docu, selector, multiple = false) => {
   if (multiple) { return parent.querySelectorAll(selector); }
   return parent.querySelector(selector);
 };
 
 // 删除节点
-export const remove = node => {
-  if (node && node.parentNode) { node.parentNode.removeChild(node); }
+export const remove = element => {
+  if (element && element.parentNode) { element.parentNode.removeChild(element); }
 };
 
 // 添加节点
-export const appendChild = (node, child) => {
-  if (node.nodeType === nodeType.ELEMENT && child.nodeType === nodeType.ELEMENT) {
-    node.appendChild(child);
+export const appendChild = (element, child) => {
+  if (element.nodeType === nodeType.ELEMENT && child.nodeType === nodeType.ELEMENT) {
+    element.appendChild(child);
   }
 };
 
-// 获取设置属性
-export const attr = (node, key, value = '') => {
+// 获取设置 attribute 属性
+export const attr = (element, key, value = '') => {
   // 获取 attribute
-  if (value === '') { return node.getAttribute(attr); }
+  if (value === '') { return element.getAttribute(attr); }
 
   // 删除 attribute
   if (value == null) {
-    node.removeAttribute(attr);
+    element.removeAttribute(attr);
     return;
   }
 
   // 设置 attribute
-  node.setAttribute(key, value);
+  element.setAttribute(key, value);
 };
